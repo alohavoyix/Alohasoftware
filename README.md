@@ -1,5 +1,9 @@
 # 🚫 Software Sharing Policy
 
+![License: Restricted](https://img.shields.io/badge/License-Restricted-red.svg)
+![Sharing: Prohibited](https://img.shields.io/badge/Sharing-Prohibited-darkred.svg)
+![Security: Enforced](https://img.shields.io/badge/Security-Enforced-orange.svg)
+
 This repository contains restricted software.  
 To protect security, licensing, and the integrity of the project, **do not share these files with anyone else**.
 
