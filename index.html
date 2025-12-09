@@ -18,7 +18,7 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-position: center;
-      color: #f8f8f8; 
+      color: #f8f8f8; /* Base color for unstyled text is light */
     }
 
     /* Dark Overlay */
@@ -26,7 +26,7 @@
       content: "";
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.65); /* Softened overlay opacity */
+      background: rgba(0, 0, 0, 0.65);
       z-index: -1;
     }
 
@@ -88,12 +88,14 @@
       max-width: 900px;
       margin: 20px auto;
       min-height: 60vh;
+      padding-top: 20px; /* Added padding since boxes are gone */
     }
 
     /* --- Page/Tab Content logic --- */
     .page-content {
       display: none; 
       animation: fadeIn 0.5s;
+      padding: 0 10px; /* Add slight padding for content against edges */
     }
 
     .page-content.active-page {
@@ -105,23 +107,13 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* --- Card/Box Styles (Softer Light Mode) --- */
-    .category-box {
-      background: #fcfcf5; /* Softer, off-white cream color (UPDATED) */
-      color: #333; 
-      padding: 30px;
-      border-radius: 12px;
-      margin-bottom: 25px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-      backdrop-filter: none;
-      border: none;
-    }
-
-    .category-box h2 {
+    /* --- CONTENT STYLES (No Box) --- */
+    /* Headers are light yellow */
+    .page-content h2 {
       margin-top: 0;
-      color: #2c3e50;
+      color: #f1c40f; 
       font-size: 2em;
-      border-bottom: 1px solid #bdc3c7;
+      border-bottom: 1px solid rgba(241, 196, 15, 0.4);
       padding-bottom: 10px;
       margin-bottom: 20px;
     }
@@ -136,8 +128,9 @@
       font-size: 1.2em;
     }
 
+    /* Links are bright blue for contrast */
     a {
-      color: #1abc9c;
+      color: #3498db; 
       font-weight: bold;
       text-decoration: none;
       transition: color 0.2s;
@@ -145,7 +138,7 @@
 
     a:hover {
       text-decoration: underline;
-      color: #2c3e50;
+      color: #ffffff;
     }
 
     .note {
@@ -169,13 +162,7 @@
     }
 
     /* --- Footer Styles --- */
-    hr {
-      border: none;
-      border-top: 1px solid rgba(241, 196, 15, 0.2);
-      margin: 40px auto 0;
-      width: 90%;
-      max-width: 900px;
-    }
+    /* Removed HR tag */
     footer {
       text-align: center;
       padding: 20px;
@@ -183,6 +170,7 @@
       color: #f1c40f;
       font-size: 0.9em;
       width: 100%;
+      margin-top: 50px; /* Added spacing above footer */
     }
   </style>
 </head>
@@ -204,7 +192,7 @@
   <div class="container">
 
     <div id="home" class="page-content">
-      <div class="category-box" style="text-align: center;">
+      <div style="text-align: center; margin-bottom: 25px;">
         <h2>Welcome</h2>
         <p>Select a category from the navigation bar above to access specific software downloads.</p>
         <p><em>Note: Some files require a password. Please DM for access.</em></p>
@@ -212,7 +200,7 @@
     </div>
 
     <div id="cps" class="page-content">
-      <div class="category-box">
+      <div style="margin-bottom: 25px;">
         <h2>CPS Software</h2>
         <ul>
           <li><a href="https://f2h.io/6v6gvvp82uj6" target="_blank">📄 Astro 25 Depot</a></li>
@@ -222,7 +210,7 @@
     </div>
 
     <div id="speedline" class="page-content">
-      <div class="category-box">
+      <div style="margin-bottom: 25px;">
         <h2>SpeedLine</h2>
         <ul>
           <li><a href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/sMkDMx6sNhLe6JhHN-OBDvFs5kgTj4uuBAly3kI_zgqrhGtZDe_5RDiLATlTqQXj/n/axt4iabxzbxy/b/bucket-20191220-1135/o/SpeedLine/SpeedLineSetup.EXE" target="_blank">⬇️ SpeedLineSetup.EXE</a></li>
@@ -231,7 +219,7 @@
     </div>
 
     <div id="abs" class="page-content">
-      <div class="category-box">
+      <div style="margin-bottom: 25px;">
         <h2>ABS Systems</h2>
         <ul>
           <li><a href="https://app.box.com/s/oyjnabk24ec1eaf8errx3kqgtb6zip5b" target="_blank">🥤 NEWPOS Drink Software</a></li>
@@ -240,7 +228,7 @@
     </div>
 
     <div id="drivers" class="page-content">
-      <div class="category-box">
+      <div style="margin-bottom: 25px;">
         <h2>Drivers</h2>
         <ul>
           <li><a href="https://f2h.io/8e3wefuk7697" target="_blank">🔧 Sentinal HASP Driver</a></li>
@@ -250,7 +238,7 @@
     </div>
 
     <div id="pos" class="page-content">
-      <div class="category-box">
+      <div style="margin-bottom: 25px;">
         <h2>Aloha POS / NCR Voyix</h2>
         <ul>
           <li><a href="https://f2h.io/1g16ptj0nuqy" target="_blank">💻 Aloha Manager</a></li>
@@ -262,7 +250,6 @@
 
   </div>
 
-  <hr>
   <footer>
     <p>&copy; 2025 Aloha Voyix Hub. All Rights Reserved. | Contact: DM for technical support</p>
   </footer>
