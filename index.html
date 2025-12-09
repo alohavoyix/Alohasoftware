@@ -319,18 +319,17 @@
       }
     }
     
-    // NEW FUNCTION: Live content filter
+    // REVISED FUNCTION: Live content filter
     function filterContent() {
-      // Get the current search input and convert to lowercase
-      let input = document.getElementById('searchInput');
-      let filter = input.value.toLowerCase();
+      let filter = document.getElementById('searchInput').value.toLowerCase();
       
-      // Get the currently active page (only search on the page the user is viewing)
-      let activePage = document.querySelector('.page-content.active-page');
-      
-      if (!activePage) return; // Exit if no page is active
+      // Get the ID of the currently active page from the hash
+      let pageId = window.location.hash.replace('#', '') || 'home';
+      let activePage = document.getElementById(pageId); 
 
-      // Search all list items on the active page
+      if (!activePage) return; 
+
+      // Target all list items inside the active page
       let li = activePage.getElementsByTagName('li');
       
       for (let i = 0; i < li.length; i++) {
@@ -342,8 +341,6 @@
           li[i].style.display = "none"; // Hide item
         }
       }
-      
-      // Since the Home page has no list items, we don't need to do anything there.
     }
 
     // Function to handle initial load and URL changes
