@@ -75,36 +75,13 @@
     /* --- Header Area --- */
     header {
       text-align: center;
-      padding: 40px 20px 20px; /* Reduced bottom padding to fit search */
+      padding: 40px 20px 20px;
       font-size: 2.5em;
       font-weight: bold;
       color: #f1c40f; 
       text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
     }
     
-    /* --- Search Bar Styles --- */
-    #search-container {
-        text-align: center;
-        padding-bottom: 20px;
-    }
-
-    #searchInput {
-        width: 90%;
-        max-width: 600px;
-        padding: 12px 20px;
-        border: 2px solid #f1c40f;
-        border-radius: 8px;
-        font-size: 1.1em;
-        background-color: rgba(255, 255, 255, 0.9);
-        color: #333;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    }
-    
-    #searchInput::placeholder {
-        color: #777;
-    }
-
-
     /* --- Layout Container --- */
     .container {
       width: 90%;
@@ -180,9 +157,6 @@
         font-size: 14px;
         padding: 12px 10px;
       }
-      #searchInput {
-        font-size: 1em;
-      }
     }
 
     /* --- Footer Styles --- */
@@ -212,10 +186,6 @@
     Aloha Voyix Hub
   </header>
   
-  <div id="search-container">
-    <input type="text" id="searchInput" onkeyup="filterContent()" placeholder="Search drivers or software..." title="Type in a name">
-  </div>
-
   <div class="container">
 
     <div id="home" class="page-content">
@@ -230,7 +200,7 @@
       <div style="margin-bottom: 25px;">
         <h2>CPS Software</h2>
         <ul>
-          <li><a href="https://f2h.io/6v6gvvp82uj6" target="_blank">📄 Astro 25 Depot</a></li>
+          <li><a href="https://f2h.io/6v6gvvp82uj6" target="_blank">📄 Astro 25 Depot **(v1.0) - Updated 2025/11/15**</a></li>
         </ul>
         <p class="note">🔒 DM me for the file password</p>
       </div>
@@ -240,7 +210,7 @@
       <div style="margin-bottom: 25px;">
         <h2>SpeedLine</h2>
         <ul>
-          <li><a href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/sMkDMx6sNhLe6JhHN-OBDvFs5kgTj4uuBAly3kI_zgqrhGtZDe_5RDiLATlTqQXj/n/axt4iabxzbxy/b/bucket-20191220-1135/o/SpeedLine/SpeedLineSetup.EXE" target="_blank">⬇️ SpeedLineSetup.EXE</a></li>
+          <li><a href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/sMkDMx6sNhLe6JhHN-OBDvFs5kgTj4uuBAly3kI_zgqrhGtZDe_5RDiLATlTqQXj/n/axt4iabxzbxy/b/bucket-20191220-1135/o/SpeedLine/SpeedLineSetup.EXE" target="_blank">⬇️ SpeedLineSetup.EXE **(v4.2.1) - Updated 2025/12/01**</a></li>
         </ul>
       </div>
     </div>
@@ -249,7 +219,7 @@
       <div style="margin-bottom: 25px;">
         <h2>ABS Systems</h2>
         <ul>
-          <li><a href="https://app.box.com/s/oyjnabk24ec1eaf8errx3kqgtb6zip5b" target="_blank">🥤 NEWPOS Drink Software</a></li>
+          <li><a href="https://app.box.com/s/oyjnabk24ec1eaf8errx3kqgtb6zip5b" target="_blank">🥤 NEWPOS Drink Software **(v3.0) - Updated 2025/10/20**</a></li>
         </ul>
       </div>
     </div>
@@ -258,7 +228,7 @@
       <div style="margin-bottom: 25px;">
         <h2>Drivers</h2>
         <ul>
-          <li><a href="https://f2h.io/8e3wefuk7697" target="_blank">🔧 Sentinal HASP Driver</a></li>
+          <li><a href="https://f2h.io/8e3wefuk7697" target="_blank">🔧 Sentinal HASP Driver **(v7.5) - Updated 2025/09/01**</a></li>
         </ul>
         <p class="note">🔒 DM me for the file password</p>
       </div>
@@ -268,8 +238,8 @@
       <div style="margin-bottom: 25px;">
         <h2>Aloha POS / NCR Voyix</h2>
         <ul>
-          <li><a href="https://f2h.io/1g16ptj0nuqy" target="_blank">💻 Aloha Manager</a></li>
-          <li><a href="https://f2h.io/57yr7719o2bn" target="_blank">🌐 Team Viewer QS</a></li>
+          <li><a href="https://f2h.io/1g16ptj0nuqy" target="_blank">💻 Aloha Manager **(v15.0) - Updated 2025/11/22**</a></li>
+          <li><a href="https://f2h.io/57yr7719o2bn" target="_blank">🌐 Team Viewer QS **(v1.2) - Updated 2025/12/08**</a></li>
         </ul>
         <p class="note">🔒 DM me for the file password</p>
       </div>
@@ -285,9 +255,6 @@
     function openPage(pageName) {
       window.location.hash = pageName;
       showPage(pageName);
-      // Clear search and reset filtering whenever a tab is clicked
-      document.getElementById('searchInput').value = '';
-      filterContent(); 
     }
     
     function showPage(pageName) {
@@ -316,30 +283,6 @@
       const targetButton = document.querySelector(`.nav-btn[onclick*="'${pageName}'"]`);
       if (targetButton) {
         targetButton.className += " active";
-      }
-    }
-    
-    // REVISED FUNCTION: Live content filter
-    function filterContent() {
-      let filter = document.getElementById('searchInput').value.toLowerCase();
-      
-      // Get the ID of the currently active page from the hash
-      let pageId = window.location.hash.replace('#', '') || 'home';
-      let activePage = document.getElementById(pageId); 
-
-      if (!activePage) return; 
-
-      // Target all list items inside the active page
-      let li = activePage.getElementsByTagName('li');
-      
-      for (let i = 0; i < li.length; i++) {
-        let text = li[i].textContent || li[i].innerText;
-        
-        if (text.toLowerCase().indexOf(filter) > -1) {
-          li[i].style.display = ""; // Show item
-        } else {
-          li[i].style.display = "none"; // Hide item
-        }
       }
     }
 
