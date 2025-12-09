@@ -3,140 +3,264 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Motorola software</title>
+  <title>Motorola Software Portal</title>
   <style>
+    /* --- Base Styles --- */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-image: url('Wallpaper.jpg'); /* Use your uploaded image filename */
+      
+      /* UPDATED WALLPAPER HERE */
+      background-image: url('skin2.png'); 
+      
       background-size: cover;
       background-repeat: no-repeat;
+      background-attachment: fixed;
       background-position: center;
       color: #ffffff;
     }
 
+    /* Dark Overlay - Adjusted for readability over skins */
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.6); /* dark overlay for contrast */
+      background: rgba(0, 0, 0, 0.75); 
       z-index: -1;
     }
 
-    header {
-      text-align: center;
-      padding: 30px 0;
-      background: rgba(0, 0, 0, 0.7);
-      font-size: 2em;
+    /* --- Navigation Bar --- */
+    nav {
+      background: rgba(0, 0, 0, 0.9);
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      border-bottom: 2px solid #f1c40f;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0;
+    }
+
+    /* Nav Buttons */
+    .nav-btn {
+      background: none;
+      border: none;
+      color: #ecf0f1;
+      padding: 15px 20px;
+      font-size: 16px;
       font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    .nav-btn:hover {
+      background: rgba(241, 196, 15, 0.2);
       color: #f1c40f;
     }
 
+    /* The Active Tab Style */
+    .nav-btn.active {
+      background: #f1c40f;
+      color: #000;
+    }
+
+    /* --- Header Area --- */
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #f1c40f;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    /* --- Layout Container --- */
     .container {
       width: 90%;
       max-width: 900px;
-      margin: 40px auto;
+      margin: 20px auto;
+      min-height: 60vh;
     }
 
-    .category {
-      background: rgba(255, 255, 255, 0.1); /* translucent box */
-      padding: 20px;
+    /* --- Page/Tab Content logic --- */
+    .page-content {
+      display: none; 
+      animation: fadeIn 0.5s;
+    }
+
+    .page-content.active-page {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- Card/Box Styles --- */
+    .category-box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
       border-radius: 12px;
       margin-bottom: 25px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
-    .category h2 {
+    .category-box h2 {
       margin-top: 0;
       color: #f39c12;
-      font-size: 1.5em;
+      font-size: 2em;
       border-bottom: 1px solid rgba(255,255,255,0.3);
-      padding-bottom: 5px;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
     }
 
-    .category ul {
+    ul {
       list-style-type: none;
       padding-left: 0;
     }
 
-    .category li {
-      margin-bottom: 10px;
-    }
-
-    .note {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 8px 14px;
-      background: #e74c3c;
-      color: #fff;
-      font-weight: bold;
-      border-radius: 6px;
-      text-align: center;
+    li {
+      margin-bottom: 15px;
+      font-size: 1.2em;
     }
 
     a {
       color: #1abc9c;
       font-weight: bold;
       text-decoration: none;
+      transition: color 0.2s;
     }
 
     a:hover {
       text-decoration: underline;
-      color: #ecf0f1;
+      color: #ffffff;
+    }
+
+    .note {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #c0392b;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 6px;
+      font-size: 0.9em;
+    }
+    
+    @media (max-width: 600px) {
+      .nav-btn {
+        flex: 1 1 auto;
+        font-size: 14px;
+        padding: 12px 10px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    Motorola Software
+  <nav>
+    <button class="nav-btn active" onclick="openPage('home')">Home</button>
+    <button class="nav-btn" onclick="openPage('cps')">CPS</button>
+    <button class="nav-btn" onclick="openPage('speedline')">SpeedLine</button>
+    <button class="nav-btn" onclick="openPage('abs')">ABS</button>
+    <button class="nav-btn" onclick="openPage('drivers')">Drivers</button>
+    <button class="nav-btn" onclick="openPage('pos')">Aloha POS</button>
+  </nav>
+
+  <header id="main-header">
+    Motorola Software Hub
   </header>
 
   <div class="container">
 
-    <div class="category">
-      <h2>CPS</h2>
-      <ul>
-        <li><a href="https://f2h.io/6v6gvvp82uj6" target="_blank">Astro 25 Depot</a></li>
-      </ul>
-      <p class="note">🔒 DM me for the file password</p>
+    <div id="home" class="page-content active-page">
+      <div class="category-box" style="text-align: center;">
+        <h2>Welcome</h2>
+        <p>Select a category from the navigation bar above to access specific software downloads.</p>
+        <p><em>Note: Some files require a password. Please DM for access.</em></p>
+      </div>
     </div>
 
-    <div class="category">
-      <h2>SpeedLine</h2>
-      <ul>
-        <li><a href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/sMkDMx6sNhLe6JhHN-OBDvFs5kgTj4uuBAly3kI_zgqrhGtZDe_5RDiLATlTqQXj/n/axt4iabxzbxy/b/bucket-20191220-1135/o/SpeedLine/SpeedLineSetup.EXE" target="_blank">SpeedLine.exe</a></li>
-      </ul>
-    </div>
-
-    <div class="category">
-      <h2>ABS</h2>
-      <ul>
-        <li><a href="https://app.box.com/s/oyjnabk24ec1eaf8errx3kqgtb6zip5b" target="_blank">NEWPOS Drink Software</a></li>
-      </ul>
-    </div>
-    
-    <div class="category">
-      <h2>Sentinal HASP Driver</h2>
-      <ul>
-        <li><a href="https://f2h.io/8e3wefuk7697" target="_blank">Sentinal HASP Driver</a></li>
+    <div id="cps" class="page-content">
+      <div class="category-box">
+        <h2>CPS Software</h2>
+        <ul>
+          <li><a href="https://f2h.io/6v6gvvp82uj6" target="_blank">📄 Astro 25 Depot</a></li>
+        </ul>
         <p class="note">🔒 DM me for the file password</p>
-      </ul>
+      </div>
     </div>
 
-    <div class="category">
-      <h2>Aloha POS NCR Voyix Software</h2>
-      <ul>
-        <li><a href="https://f2h.io/1g16ptj0nuqy" target="_blank">Aloha Manager</a></li>
-        <li><a href="https://f2h.io/57yr7719o2bn" target=_blank">Team Viewer QS</a></li>
+    <div id="speedline" class="page-content">
+      <div class="category-box">
+        <h2>SpeedLine</h2>
+        <ul>
+          <li><a href="https://objectstorage.us-phoenix-1.oraclecloud.com/p/sMkDMx6sNhLe6JhHN-OBDvFs5kgTj4uuBAly3kI_zgqrhGtZDe_5RDiLATlTqQXj/n/axt4iabxzbxy/b/bucket-20191220-1135/o/SpeedLine/SpeedLineSetup.EXE" target="_blank">⬇️ SpeedLineSetup.EXE</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="abs" class="page-content">
+      <div class="category-box">
+        <h2>ABS Systems</h2>
+        <ul>
+          <li><a href="https://app.box.com/s/oyjnabk24ec1eaf8errx3kqgtb6zip5b" target="_blank">🥤 NEWPOS Drink Software</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="drivers" class="page-content">
+      <div class="category-box">
+        <h2>Drivers</h2>
+        <ul>
+          <li><a href="https://f2h.io/8e3wefuk7697" target="_blank">🔧 Sentinal HASP Driver</a></li>
+        </ul>
         <p class="note">🔒 DM me for the file password</p>
-      </ul>
+      </div>
     </div>
 
+    <div id="pos" class="page-content">
+      <div class="category-box">
+        <h2>Aloha POS / NCR Voyix</h2>
+        <ul>
+          <li><a href="https://f2h.io/1g16ptj0nuqy" target="_blank">💻 Aloha Manager</a></li>
+          <li><a href="https://f2h.io/57yr7719o2bn" target="_blank">🌐 Team Viewer QS</a></li>
+        </ul>
+        <p class="note">🔒 DM me for the file password</p>
+      </div>
+    </div>
 
   </div>
+
+  <script>
+    function openPage(pageName) {
+      var i, tabcontent, navbtns;
+      
+      // Hide all content
+      tabcontent = document.getElementsByClassName("page-content");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+        tabcontent[i].classList.remove("active-page");
+      }
+
+      // Deactivate all buttons
+      navbtns = document.getElementsByClassName("nav-btn");
+      for (i = 0; i < navbtns.length; i++) {
+        navbtns[i].className = navbtns[i].className.replace(" active", "");
+      }
+
+      // Show specific content and activate button
+      document.getElementById(pageName).style.display = "block";
+      event.currentTarget.className += " active";
+    }
+  </script>
 
 </body>
 </html>
