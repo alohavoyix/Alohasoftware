@@ -26,7 +26,7 @@
       content: "";
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.7); 
+      background: rgba(0, 0, 0, 0.65); /* Softened overlay opacity */
       z-index: -1;
     }
 
@@ -107,7 +107,7 @@
 
     /* --- Card/Box Styles (Softer Light Mode) --- */
     .category-box {
-      background: #ededed; /* Softer Light Gray for less eye strain */
+      background: #fcfcf5; /* Softer, off-white cream color (UPDATED) */
       color: #333; 
       padding: 30px;
       border-radius: 12px;
@@ -269,7 +269,6 @@
   
   <script>
     function openPage(pageName) {
-      // Set the hash in the URL (e.g., adds #cps to the address bar)
       window.location.hash = pageName;
       showPage(pageName);
     }
@@ -297,7 +296,6 @@
       }
 
       // 4. Set the "active" class on the corresponding button
-      // Finds the button that has the onclick='openPage("pageName")' attribute
       const targetButton = document.querySelector(`.nav-btn[onclick*="'${pageName}'"]`);
       if (targetButton) {
         targetButton.className += " active";
@@ -306,10 +304,8 @@
 
     // Function to handle initial load and URL changes
     function loadPageFromHash() {
-      // Get hash from URL (e.g., '#cps' -> 'cps')
       let page = window.location.hash.replace('#', '');
       
-      // Default to 'home' if no hash is present or hash is invalid
       if (!page || !document.getElementById(page)) {
         page = 'home';
       }
